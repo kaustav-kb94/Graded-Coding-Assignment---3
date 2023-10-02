@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Ticket Tracker Application</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-md bg-primary navbar-dark">
+		<!-- Brand -->
+		<a class="navbar-brand" href="#">Ticket Tracker Application</a>
+		<a class="navbar-brand" th:href="@{/admin/tickets}">Tickets</a>
+		<a class="navbar-brand" th:href="@{/admin/tickets/newTicket}">New Ticket</a>
+
+		<!-- Toggler/collapsibe Button -->
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+	</nav>
+	<br>
+	<br>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+				<h1 class="text-center"> Ticket Details </h1>
+				<div class="card-body">
+					<form th:action="@{/admin/tickets/{id} (id=${ticket.id})}" th:object="${ticket}" method="POST">
+						<div class="form-group">
+							<label> Title </label>
+							<input type="text" name="title" th:field="*{title}" class="form-control"
+								placeholder="Enter ticket title" readonly />
+						</div>
+
+						<div class="form-group">
+							<label> Short Description </label>
+							<input type="text" name="shortDescription" th:field="*{shortDescription}"
+								class="form-control" placeholder="Enter ticket description" readonly />
+						</div>
+
+						<div class="form-group">
+							<label> Content </label>
+							<input type="text" name="content" th:field="*{content}" class="form-control"
+								placeholder="Enter content" readonly />
+						</div>
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+
+		<footer class="footer text-center text-lg-start bg-light text-muted">
+			<div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+				<h6>Copyright
+					<span>&copy; 2023 GreatLearning All rights reserved.</span>
+				</h6>
+			</div>
+		</footer>
+
+
+	</div>
+</body>
+
+</html>
